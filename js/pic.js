@@ -108,7 +108,8 @@ window.onload = function(){
 		
 		for(var i=0;i<numArr.length;i++){
 			//console.log(numArr[i]+'%%%%'+getXy(aLi[numArr[i]].getElementsByClassName('picList')[0]));
-			fnMove(aLi[numArr[i]].getElementsByClassName('picList')[0].firstChild);//删除一次后会出现undefined			
+			fnMove(aLi[numArr[i]].getElementsByClassName('picList')[0].firstChild);//删除一次后会出现undefined	
+			//fnMove(aLi[numArr[i]].getElementsByClassName('picList')[0]);
 		}
 	
 		setTimeout(function(){
@@ -124,16 +125,22 @@ window.onload = function(){
 				
 	}
 	
-	function fnMove(obj){
+	function fnMove(obj){//根据原先所在的位置移动到中间位置
 		var xY = getXy(obj);
-		var l = xY.l;
+		var l = parseInt(xY.l/remNum);
+		console.log(l);
 		//var t = xY.t;
-		if(l<0.5*remNum){
-			obj.style.left = 1+'rem';		
-		}else if(l>1.5*remNum && l<2.5*remNum){
-			obj.style.left = -1+'rem';
+//		if(l<0.5*remNum){
+//			obj.style.left = 0.75+'rem';		
+//		}else if(l>1.5*remNum && l<2.5*remNum){
+//			obj.style.left = -0.75+'rem';
+//		}
+		if(l===0){
+			obj.style.left = 0.75+'rem';		
+		}else if(l===2){
+			obj.style.left = -0.75+'rem';
 		}
-	
+		
 		obj.style.top = 4.55+'rem';
 		//obj.style.top = 'calc(100%)';
 	}
